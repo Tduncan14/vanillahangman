@@ -29,6 +29,17 @@
         }
 
 
+        .done{
+
+            cursor:default;
+            background-color:gray;
+            color:white;
+            border:white;
+
+
+
+            
+        }
 
 
     </style>
@@ -115,7 +126,7 @@ function buildBoard(){
 
           div.innerText="_"
 
-          
+          div.myLetter = letter
 
           console.log('div',div)
 
@@ -124,6 +135,8 @@ function buildBoard(){
         
     })
 
+
+    let solutionLetter = document.querySelectorAll('.letter2');
 
     for(let x = 0; x<26; x++){
 
@@ -137,6 +150,35 @@ function buildBoard(){
       div.classList.add('letter');
 
       div.myLetter=Temp;
+
+      let handler= function(e){
+
+          console.log(Temp)
+          div.removeEventListener('click',handler)
+          div.classList.add('done')
+
+
+          let counter = 0;
+          solutionLetter.forEach(function(letter){
+
+           if(letter.innerHTML != '_'){
+                counter++
+
+
+           }
+
+           if(letter.myLetter.toUpperCase( )=== Temp){
+
+            letter.innerHTML = Temp;
+
+
+           }
+          })
+      }
+
+      div.addEventListener('click',handler)
+
+     
 
       div.innerHTML = Temp;
 
