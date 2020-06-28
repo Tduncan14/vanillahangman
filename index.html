@@ -87,7 +87,13 @@ const button = document.querySelector('button');
 
 button.addEventListener('click',() =>{
 
-    button.style.display = 'none'
+    output1.innerHTML ="";
+    output2.innerHTML ="";
+
+   if(myWords.length > 0) {
+
+     button.style.display = 'none';
+   }
 
 
     myWords.sort(()=>{
@@ -153,12 +159,15 @@ function buildBoard(){
 
       let handler= function(e){
 
+        
+
           console.log(Temp)
           div.removeEventListener('click',handler)
           div.classList.add('done')
 
 
           let counter = 0;
+          let guess = 0;
           solutionLetter.forEach(function(letter){
 
            if(letter.innerHTML != '_'){
@@ -170,10 +179,25 @@ function buildBoard(){
            if(letter.myLetter.toUpperCase( )=== Temp){
 
             letter.innerHTML = Temp;
+            guess++;
 
 
            }
           })
+
+          if(guess > 0){
+              console.log(`you found ${guess} letters`)
+          }
+
+          let letterLeft = solutionLetter.length -(guess + counter);
+
+          console.log(letterLeft);
+
+
+          if(letterLeft < 1){
+
+            button.style.display = 'block';
+          }
       }
 
       div.addEventListener('click',handler)
