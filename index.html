@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div id="output1">
+
+    </div>
+
+
+    <div id="output2">
+        
+    </div>
+
+
+    <div id = "message"></div>
+
+
+    <button>Start</button>
+
+
+<script>
+
+
+const myWords = ['python','javascript','node','react','redux','mongodb','angular']
+
+
+let player = {
+
+
+}
+
+const message = document.querySelector('#message');
+
+const output1 = document.querySelector('#output1');
+
+
+const output2 = document.querySelector('#output');
+
+
+const button = document.querySelector('button');
+
+
+button.addEventListener('click',() =>{
+
+
+    myWords.sort(()=>{
+
+        return.5- Math.random();
+    });
+
+    // const randomSort = Math.floor(Math.random()*myWords.length)
+
+
+    // console.log(myWords[randomSort]);
+
+
+  let theWord = myWords.shift();
+
+
+  console.log(theWord)
+
+
+ 
+
+  player.solution = theWord.split("")
+
+  buildBoard();
+
+})
+
+
+function buildBoard(){
+
+
+    player.solution.forEach(function(letter){
+
+        console.log(letter)
+
+        let div = document.createElement('div')
+
+        div.classList.add('letter2')
+
+        div.innerText="_"
+
+        div.myLetter = letter;
+
+        output2.appendChild(div);
+    })
+}
+
+
+</script>
+    
+</body>
+</html>
